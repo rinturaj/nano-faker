@@ -20,7 +20,8 @@ describe('@nano-faker/internet', () => {
             setSeed(100);
             const email2 = email();
 
-            expect(email1).toBe(email2);
+            expect(email1).toBe('evlinturnlis52@yahoo.com');
+            expect(email2).toBe('evlinturnlis52@yahoo.com');
         });
 
         it('should generate different emails in sequence', () => {
@@ -69,7 +70,8 @@ describe('@nano-faker/internet', () => {
             setSeed(200);
             const user2 = username();
 
-            expect(user1).toBe(user2);
+            expect(user1).toBe('naley_parson');
+            expect(user2).toBe('naley_parson');
         });
 
         it('should generate different usernames in sequence', () => {
@@ -102,7 +104,8 @@ describe('@nano-faker/internet', () => {
             setSeed(300);
             const d2 = domain();
 
-            expect(d1).toBe(d2);
+            expect(d1).toBe('tayaker.dev');
+            expect(d2).toBe('tayaker.dev');
         });
 
         it('should match domain pattern', () => {
@@ -136,7 +139,8 @@ describe('@nano-faker/internet', () => {
             setSeed(400);
             const url2 = url();
 
-            expect(url1).toBe(url2);
+            expect(url1).toBe('https://jonard.io');
+            expect(url2).toBe('https://jonard.io');
         });
 
         it('should match URL pattern', () => {
@@ -168,7 +172,8 @@ describe('@nano-faker/internet', () => {
             setSeed(500);
             const ip2 = ipv4();
 
-            expect(ip1).toBe(ip2);
+            expect(ip1).toBe('68.186.92.223');
+            expect(ip2).toBe('68.186.92.223');
         });
 
         it('should have valid octets', () => {

@@ -44,7 +44,8 @@ describe('@nano-faker/patterns', () => {
             setSeed(100);
             const result2 = fake('###-@@@');
 
-            expect(result1).toBe(result2);
+            expect(result1).toBe('235-xor');
+            expect(result2).toBe('235-xor');
         });
 
         it('should handle escape sequences', () => {

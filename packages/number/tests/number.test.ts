@@ -31,7 +31,8 @@ describe('@nano-faker/number', () => {
             setSeed(100);
             const age2 = age();
 
-            expect(age1).toBe(age2);
+            expect(age1).toBe(30);
+            expect(age2).toBe(30);
         });
     });
 
@@ -55,7 +56,8 @@ describe('@nano-faker/number', () => {
             setSeed(200);
             const id2 = id();
 
-            expect(id1).toBe(id2);
+            expect(id1).toBe('36467492');
+            expect(id2).toBe('36467492');
         });
 
         it('should generate different IDs in sequence', () => {
@@ -94,7 +96,8 @@ describe('@nano-faker/number', () => {
             setSeed(300);
             const otp2 = otp();
 
-            expect(otp1).toBe(otp2);
+            expect(otp1).toBe('807519');
+            expect(otp2).toBe('807519');
         });
     });
 
@@ -114,7 +117,8 @@ describe('@nano-faker/number', () => {
             setSeed(400);
             const range2 = range(1, 100);
 
-            expect(range1).toBe(range2);
+            expect(range1).toBe(62);
+            expect(range2).toBe(62);
         });
 
         it('should handle negative ranges', () => {

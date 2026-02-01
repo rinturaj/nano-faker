@@ -29,7 +29,8 @@ describe('@nano-faker/person', () => {
             setSeed(100);
             const name2 = firstName();
 
-            expect(name1).toBe(name2);
+            expect(name1).toBe('Evlin');
+            expect(name2).toBe('Evlin');
         });
 
         it('should generate different names in sequence', () => {
@@ -75,7 +76,8 @@ describe('@nano-faker/person', () => {
             setSeed(200);
             const name2 = lastName();
 
-            expect(name1).toBe(name2);
+            expect(name1).toBe('Gilmer');
+            expect(name2).toBe('Gilmer');
         });
 
         it('should generate different names in sequence', () => {
@@ -122,7 +124,8 @@ describe('@nano-faker/person', () => {
             setSeed(300);
             const name2 = fullName();
 
-            expect(name1).toBe(name2);
+            expect(name1).toBe('Alsiman Browell');
+            expect(name2).toBe('Alsiman Browell');
         });
 
         it('should generate different names in sequence', () => {
@@ -157,7 +160,8 @@ describe('@nano-faker/person', () => {
             setSeed(400);
             const g2 = gender();
 
-            expect(g1).toBe(g2);
+            expect(g1).toBe('non-binary');
+            expect(g2).toBe('non-binary');
         });
 
         it('should have variety', () => {
