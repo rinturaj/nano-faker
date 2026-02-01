@@ -1,0 +1,43 @@
+{
+  "name": "@nano-faker/core",
+  "version": "0.1.0",
+  "description": "Core utilities for nano-faker - seeded random number generation",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./random": {
+      "types": "./dist/random.d.ts",
+      "import": "./dist/random.js"
+    },
+    "./array": {
+      "types": "./dist/array.d.ts",
+      "import": "./dist/array.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "keywords": [
+    "random",
+    "seed",
+    "deterministic",
+    "rng"
+  ],
+  "author": "Rintu Raj C",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  }
+}

@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>nano-faker - Lightweight Fake Data Generation for JavaScript | Tree-Shakable & Deterministic</title>
+    <meta name="title" content="nano-faker - Lightweight Fake Data Generation for JavaScript" />
+    <meta name="description"
+        content="Ultra-lightweight fake data generator for JavaScript. Less than 1KB core, fully tree-shakable, zero dependencies. Perfect for testing, mocking, and prototyping. ESM-only with deterministic output." />
+    <meta name="keywords"
+        content="fake data, faker, mock data, test data, javascript, typescript, tree-shaking, esm, deterministic, lightweight, zero dependencies, faker alternative" />
+    <meta name="author" content="Rintu Raj C" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nano-faker.dev/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nano-faker.dev/" />
+    <meta property="og:title" content="nano-faker - Lightweight Fake Data Generation for JavaScript" />
+    <meta property="og:description"
+        content="Ultra-lightweight fake data generator. Less than 1KB core, fully tree-shakable, zero dependencies. Perfect for testing and mocking." />
+    <meta property="og:image" content="https://nano-faker.dev/og-image.png" />
+    <meta property="og:site_name" content="nano-faker" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://nano-faker.dev/" />
+    <meta property="twitter:title" content="nano-faker - Lightweight Fake Data Generation" />
+    <meta property="twitter:description"
+        content="Ultra-lightweight fake data generator. Less than 1KB core, fully tree-shakable, zero dependencies." />
+    <meta property="twitter:image" content="https://nano-faker.dev/og-image.png" />
+
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "nano-faker",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cross-platform",
+      "description": "Ultra-lightweight fake data generator for JavaScript with less than 1KB core bundle size, fully tree-shakable, and zero dependencies.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Rintu Raj C"
+      },
+      "programmingLanguage": "TypeScript",
+      "keywords": "fake data, faker, mock data, test data, javascript, typescript, tree-shaking",
+      "url": "https://nano-faker.dev",
+      "softwareVersion": "0.1.0",
+      "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/style.css" as="style" />
+    <link rel="preload" href="/src/main.ts" as="script" />
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <!-- <a href="#main-content" class="skip-to-main">Skip to main content</a> -->
+
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <div class="nav-overlay" id="nav-overlay"></div>
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="/favicon.png" alt="nano-faker" class="brand-icon-img" />
+                    <span class="brand-text">nano-faker</span>
+                </div>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span id="menu-icon">☰</span>
+                </button>
+                <div class="nav-links" id="nav-links">
+                    <a href="#" data-page="home" class="nav-link active">Home</a>
+                    <a href="#" data-page="getting-started" class="nav-link">Getting Started</a>
+                    <a href="#" data-page="playground" class="nav-link">Playground</a>
+                    <a href="#" data-page="api" class="nav-link">API Reference</a>
+                    <a href="#" data-page="examples" class="nav-link">Examples</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main id="main-content" class="main-content" role="main">
+            <!-- Home Page -->
+            <div id="page-home" class="page active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <img src="/favicon.png" alt="nano-faker" class="hero-icon" />
+                        <h1 class="hero-title">
+                            <span class="gradient-text">nano-faker</span>
+                        </h1>
+                        <p class="hero-subtitle">Lightweight, tree-shakable fake data generation for modern JavaScript
+                        </p>
+                        <div class="hero-features">
+                            <div class="feature-badge">
+                                <span class="badge-icon">📦</span>
+                                <span>&lt; 1KB Core</span>
+                            </div>
+                            <div class="feature-badge">
+                                <span class="badge-icon">🌳</span>
+                                <span>Tree-Shakable</span>
+                            </div>
+                            <div class="feature-badge">
+                                <span class="badge-icon">🎲</span>
+                                <span>Deterministic</span>
+                            </div>
+                            <div class="feature-badge">
+                                <span class="badge-icon">⚡</span>
+                                <span>Zero Deps</span>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary btn-large" data-navigate="getting-started">Get
+                                Started</button>
+                            <button class="btn btn-secondary btn-large" data-navigate="playground">Try
+                                Playground</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <section class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Minimal Bundle Size</h3>
+                            <p>Core package &lt; 1KB gzipped. Each additional package adds only ~500B. Import only what
+                                you need.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌳</div>
+                            <h3>Fully Tree-Shakable</h3>
+                            <p>ESM-only with granular exports. Your bundler eliminates unused code automatically.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎲</div>
+                            <h3>Deterministic Output</h3>
+                            <p>Same seed always produces same results. Perfect for snapshot testing and reproducible
+                                demos.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Zero Dependencies</h3>
+                            <p>No external packages. Works in browsers and Node.js without any additional setup.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📝</div>
+                            <h3>TypeScript First</h3>
+                            <p>Written in TypeScript with full type definitions. Excellent IDE autocomplete support.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🚀</div>
+                            <h3>Modern ESM</h3>
+                            <p>Built for modern JavaScript. No legacy CommonJS baggage or compatibility layers.</p>
+                        </div>
+                    </section>
+
+                    <section class="quick-example">
+                        <h2>Quick Example</h2>
+                        <div class="code-block">
+                            <pre><code>import { setSeed } from '@nano-faker/core';
+import { firstName, lastName } from '@nano-faker/person';
+import { email } from '@nano-faker/internet';
+
+// Set seed for deterministic output
+setSeed(12345);
+
+console.log(firstName()); // "Alison"
+console.log(lastName());  // "Anderson"
+console.log(email());     // "alison.anderson42@gmail.com"</code></pre>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Getting Started Page -->
+            <div id="page-getting-started" class="page">
+                <div class="container">
+                    <div class="doc-header">
+                        <h1>Getting Started</h1>
+                        <p class="doc-subtitle">Install and start using nano-faker in minutes</p>
+                    </div>
+
+                    <div class="doc-content">
+                        <section class="doc-section">
+                            <h2>Installation</h2>
+                            <p>Install only the packages you need using your preferred package manager:</p>
+                            <div class="code-block">
+                                <pre><code># Using pnpm (recommended)
+pnpm add @nano-faker/core @nano-faker/person @nano-faker/internet
+
+# Using npm
+npm install @nano-faker/core @nano-faker/person @nano-faker/internet
+
+# Using yarn
+yarn add @nano-faker/core @nano-faker/person @nano-faker/internet</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section">
+                            <h2>Available Packages</h2>
+                            <div class="package-grid">
+                                <div class="package-card">
+                                    <h3>@nano-faker/core</h3>
+                                    <p>Foundation package with seeded RNG and utilities</p>
+                                    <span class="package-size">&lt; 1KB</span>
+                                </div>
+                                <div class="package-card">
+                                    <h3>@nano-faker/number</h3>
+                                    <p>Numeric data generation (age, id, otp, range)</p>
+                                    <span class="package-size">~500B</span>
+                                </div>
+                                <div class="package-card">
+                                    <h3>@nano-faker/person</h3>
+                                    <p>Person data with syllable-based names</p>
+                                    <span class="package-size">~500B</span>
+                                </div>
+                                <div class="package-card">
+                                    <h3>@nano-faker/internet</h3>
+                                    <p>Email, username, domain, URL, IP generation</p>
+                                    <span class="package-size">~500B</span>
+                                </div>
+                                <div class="package-card">
+                                    <h3>@nano-faker/patterns</h3>
+                                    <p>Format-based generation with placeholders</p>
+                                    <span class="package-size">~500B</span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="doc-section">
+                            <h2>Basic Usage</h2>
+                            <p>Import functions directly from packages:</p>
+                            <div class="code-block">
+                                <pre><code>import { setSeed, random, int, float } from '@nano-faker/core';
+import { firstName, lastName, fullName } from '@nano-faker/person';
+import { email, username } from '@nano-faker/internet';
+
+// Set seed for reproducible results
+setSeed(12345);
+
+// Generate data
+const name = fullName();    // "Marcus Rodriguez"
+const addr = email();       // "marcus.rodriguez42@gmail.com"
+const user = username();    // "marcus_rodriguez42"</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section">
+                            <h2>Deterministic Testing</h2>
+                            <p>Use seeds for consistent test data:</p>
+                            <div class="code-block">
+                                <pre><code>import { setSeed } from '@nano-faker/core';
+import { fullName } from '@nano-faker/person';
+
+describe('User tests', () => {
+  beforeEach(() => {
+    setSeed(12345); // Same seed = same data
+  });
+
+  it('should create user', () => {
+    const name = fullName();
+    expect(name).toMatchSnapshot(); // Always passes
+  });
+});</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section">
+                            <h2>Next Steps</h2>
+                            <ul class="doc-list">
+                                <li><a href="#" data-navigate="api">Explore the API Reference</a> for detailed
+                                    documentation</li>
+                                <li><a href="#" data-navigate="playground">Try the Playground</a> to experiment with all
+                                    functions</li>
+                                <li><a href="#" data-navigate="examples">View Examples</a> for common use cases</li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Playground Page -->
+            <div id="page-playground" class="page">
+                <div class="container">
+                    <div class="doc-header">
+                        <h1>Interactive Playground</h1>
+                        <p class="doc-subtitle">Test all functions with live output</p>
+                    </div>
+
+                    <section class="control-panel">
+                        <div class="seed-control">
+                            <label for="seed-input">Seed (for deterministic output):</label>
+                            <div class="input-group">
+                                <input type="number" id="seed-input" placeholder="Enter seed number" value="12345" />
+                                <button id="random-seed-btn" class="btn btn-secondary">Random</button>
+                                <button id="apply-seed-btn" class="btn btn-primary">Apply</button>
+                            </div>
+                        </div>
+                        <button id="generate-btn" class="btn btn-large btn-primary">
+                            Generate All
+                        </button>
+                    </section>
+
+                    <section class="output-grid">
+                        <div class="output-card">
+                            <h3>Core</h3>
+                            <div class="output-content">
+                                <div class="output-item">
+                                    <span class="label">random():</span>
+                                    <code id="output-random"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">int(1, 100):</span>
+                                    <code id="output-int"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">float(0, 10, 2):</span>
+                                    <code id="output-float"></code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="output-card">
+                            <h3>Number</h3>
+                            <div class="output-content">
+                                <div class="output-item">
+                                    <span class="label">age():</span>
+                                    <code id="output-age"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">id():</span>
+                                    <code id="output-id"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">otp():</span>
+                                    <code id="output-otp"></code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="output-card">
+                            <h3>Person</h3>
+                            <div class="output-content">
+                                <div class="output-item">
+                                    <span class="label">firstName():</span>
+                                    <code id="output-firstname"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">lastName():</span>
+                                    <code id="output-lastname"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">fullName():</span>
+                                    <code id="output-fullname"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">gender():</span>
+                                    <code id="output-gender"></code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="output-card">
+                            <h3>Internet</h3>
+                            <div class="output-content">
+                                <div class="output-item">
+                                    <span class="label">email():</span>
+                                    <code id="output-email"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">username():</span>
+                                    <code id="output-username"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">domain():</span>
+                                    <code id="output-domain"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">url():</span>
+                                    <code id="output-url"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">ipv4():</span>
+                                    <code id="output-ipv4"></code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="output-card">
+                            <h3>Patterns</h3>
+                            <div class="output-content">
+                                <div class="output-item">
+                                    <span class="label">fake("USR-####-@@"):</span>
+                                    <code id="output-pattern1"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">fake("###-##-####"):</span>
+                                    <code id="output-pattern2"></code>
+                                </div>
+                                <div class="output-item">
+                                    <span class="label">fake("***-***-***"):</span>
+                                    <code id="output-pattern3"></code>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- API Reference Page -->
+            <div id="page-api" class="page">
+                <div class="container">
+                    <div class="doc-header">
+                        <h1>API Reference</h1>
+                        <p class="doc-subtitle">Complete documentation for all packages</p>
+                    </div>
+
+                    <div class="api-nav">
+                        <button class="api-nav-btn active" data-api="core">@nano-faker/core</button>
+                        <button class="api-nav-btn" data-api="number">@nano-faker/number</button>
+                        <button class="api-nav-btn" data-api="person">@nano-faker/person</button>
+                        <button class="api-nav-btn" data-api="internet">@nano-faker/internet</button>
+                        <button class="api-nav-btn" data-api="patterns">@nano-faker/patterns</button>
+                    </div>
+
+                    <!-- Core API -->
+                    <div id="api-core" class="api-section active">
+                        <h2>@nano-faker/core</h2>
+                        <p>Foundation package with seeded random number generation and utilities.</p>
+
+                        <div class="api-function">
+                            <h3><code>setSeed(seed: number): void</code></h3>
+                            <p>Set the seed for deterministic random number generation.</p>
+                            <div class="api-params">
+                                <h4>Parameters:</h4>
+                                <ul>
+                                    <li><code>seed</code> - Positive integer seed value</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>setSeed(12345);
+const value = random(); // Always same with same seed</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>random(): number</code></h3>
+                            <p>Generate a random float between 0 (inclusive) and 1 (exclusive).</p>
+                            <div class="api-params">
+                                <h4>Returns:</h4>
+                                <p>Random float [0, 1)</p>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>const value = random(); // e.g., 0.7234</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>int(min: number, max: number): number</code></h3>
+                            <p>Generate a random integer between min and max (both inclusive).</p>
+                            <div class="api-params">
+                                <h4>Parameters:</h4>
+                                <ul>
+                                    <li><code>min</code> - Minimum value (inclusive)</li>
+                                    <li><code>max</code> - Maximum value (inclusive)</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>const age = int(18, 65);  // e.g., 42
+const dice = int(1, 6);   // e.g., 4</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>float(min: number, max: number, precision?: number): number</code></h3>
+                            <p>Generate a random float between min and max.</p>
+                            <div class="api-params">
+                                <h4>Parameters:</h4>
+                                <ul>
+                                    <li><code>min</code> - Minimum value (inclusive)</li>
+                                    <li><code>max</code> - Maximum value (exclusive)</li>
+                                    <li><code>precision</code> - Number of decimal places (default: 2)</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>const price = float(10.0, 100.0, 2); // e.g., 45.67</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>pick&lt;T&gt;(array: T[]): T</code></h3>
+                            <p>Pick a random element from an array.</p>
+                            <div class="api-params">
+                                <h4>Parameters:</h4>
+                                <ul>
+                                    <li><code>array</code> - Array to pick from</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>const color = pick(['red', 'green', 'blue']); // e.g., 'green'</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>shuffle&lt;T&gt;(array: T[]): T[]</code></h3>
+                            <p>Shuffle an array using Fisher-Yates algorithm. Returns a new array.</p>
+                            <div class="api-params">
+                                <h4>Parameters:</h4>
+                                <ul>
+                                    <li><code>array</code> - Array to shuffle</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>const shuffled = shuffle([1, 2, 3, 4, 5]); // e.g., [3, 1, 5, 2, 4]</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Number API -->
+                    <div id="api-number" class="api-section">
+                        <h2>@nano-faker/number</h2>
+                        <p>Numeric data generation utilities.</p>
+
+                        <div class="api-function">
+                            <h3><code>age(min?: number, max?: number): number</code></h3>
+                            <p>Generate a random age.</p>
+                            <div class="api-params">
+                                <h4>Parameters:</h4>
+                                <ul>
+                                    <li><code>min</code> - Minimum age (default: 18)</li>
+                                    <li><code>max</code> - Maximum age (default: 80)</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>const userAge = age();        // e.g., 42
+const childAge = age(5, 12);  // e.g., 8</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>id(length?: number): string</code></h3>
+                            <p>Generate a numeric ID.</p>
+                            <div class="api-params">
+                                <h4>Parameters:</h4>
+                                <ul>
+                                    <li><code>length</code> - Length of the ID (default: 8)</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>const userId = id();      // e.g., "47382910"
+const orderId = id(12);   // e.g., "847362910485"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>otp(length?: number): string</code></h3>
+                            <p>Generate a one-time password.</p>
+                            <div class="api-params">
+                                <h4>Parameters:</h4>
+                                <ul>
+                                    <li><code>length</code> - Length of the OTP (default: 6)</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>const code = otp();     // e.g., "472839"
+const pin = otp(4);     // e.g., "8473"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>range(min: number, max: number): number</code></h3>
+                            <p>Generate a number within range.</p>
+                            <div class="api-params">
+                                <h4>Parameters:</h4>
+                                <ul>
+                                    <li><code>min</code> - Minimum value (inclusive)</li>
+                                    <li><code>max</code> - Maximum value (inclusive)</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>const score = range(0, 100); // e.g., 73</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Person API -->
+                    <div id="api-person" class="api-section">
+                        <h2>@nano-faker/person</h2>
+                        <p>Person data generation with syllable-based procedural names.</p>
+
+                        <div class="api-function">
+                            <h3><code>firstName(): string</code></h3>
+                            <p>Generate a procedural first name.</p>
+                            <div class="code-block">
+                                <pre><code>const name = firstName(); // e.g., "Alison", "Marcus"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>lastName(): string</code></h3>
+                            <p>Generate a procedural last name.</p>
+                            <div class="code-block">
+                                <pre><code>const surname = lastName(); // e.g., "Anderson", "Rodriguez"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>fullName(): string</code></h3>
+                            <p>Generate a full name (first + last).</p>
+                            <div class="code-block">
+                                <pre><code>const name = fullName(); // e.g., "Sarah Johnson"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>gender(): string</code></h3>
+                            <p>Generate a random gender.</p>
+                            <div class="api-params">
+                                <h4>Returns:</h4>
+                                <p>One of: "male", "female", "non-binary", "other"</p>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>const g = gender(); // e.g., "female"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Internet API -->
+                    <div id="api-internet" class="api-section">
+                        <h2>@nano-faker/internet</h2>
+                        <p>Internet-related data generation.</p>
+
+                        <div class="api-function">
+                            <h3><code>email(): string</code></h3>
+                            <p>Generate a random email address.</p>
+                            <div class="code-block">
+                                <pre><code>const addr = email(); // e.g., "sarah.johnson42@gmail.com"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>username(): string</code></h3>
+                            <p>Generate a random username.</p>
+                            <div class="code-block">
+                                <pre><code>const user = username(); // e.g., "sarah_johnson42"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>domain(): string</code></h3>
+                            <p>Generate a random domain name.</p>
+                            <div class="code-block">
+                                <pre><code>const d = domain(); // e.g., "example.com"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>url(): string</code></h3>
+                            <p>Generate a random URL.</p>
+                            <div class="code-block">
+                                <pre><code>const link = url(); // e.g., "https://example.com"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="api-function">
+                            <h3><code>ipv4(): string</code></h3>
+                            <p>Generate a random IPv4 address.</p>
+                            <div class="code-block">
+                                <pre><code>const ip = ipv4(); // e.g., "192.168.1.42"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Patterns API -->
+                    <div id="api-patterns" class="api-section">
+                        <h2>@nano-faker/patterns</h2>
+                        <p>Pattern-based fake data generation.</p>
+
+                        <div class="api-function">
+                            <h3><code>fake(pattern: string): string</code></h3>
+                            <p>Generate fake data based on a pattern string.</p>
+                            <div class="api-params">
+                                <h4>Placeholders:</h4>
+                                <ul>
+                                    <li><code>#</code> → Random digit (0-9)</li>
+                                    <li><code>@</code> → Random lowercase letter (a-z)</li>
+                                    <li><code>*</code> → Random alphanumeric character</li>
+                                    <li><code>\</code> → Escape character</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre><code>fake("USR-####-@@");    // e.g., "USR-4728-ab"
+fake("###-##-####");    // e.g., "472-83-9102"
+fake("***-***-***");    // e.g., "a7X-9Bz-K4m"
+fake("\\#\\#\\#");      // "###" (escaped)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Examples Page -->
+            <div id="page-examples" class="page">
+                <div class="container">
+                    <div class="doc-header">
+                        <h1>Examples</h1>
+                        <p class="doc-subtitle">Common use cases and patterns</p>
+                    </div>
+
+                    <div class="doc-content">
+                        <section class="doc-section">
+                            <h2>Testing with Snapshots</h2>
+                            <p>Use deterministic seeds for consistent test data:</p>
+                            <div class="code-block">
+                                <pre><code>import { setSeed } from '@nano-faker/core';
+import { fullName, email } from '@nano-faker/person';
+
+describe('User creation', () => {
+  beforeEach(() => {
+    setSeed(12345); // Same seed = same data
+  });
+
+  it('should create user with valid data', () => {
+    const user = {
+      name: fullName(),
+      email: email(),
+    };
+    
+    expect(user).toMatchSnapshot();
+    // Snapshot will always match
+  });
+});</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section">
+                            <h2>Generating Test Data Arrays</h2>
+                            <p>Create arrays of fake data for testing:</p>
+                            <div class="code-block">
+                                <pre><code>import { setSeed } from '@nano-faker/core';
+import { fullName, email } from '@nano-faker/person';
+import { age } from '@nano-faker/number';
+
+setSeed(12345);
+
+const users = Array.from({ length: 10 }, (_, i) => ({
+  id: i + 1,
+  name: fullName(),
+  email: email(),
+  age: age(18, 65),
+}));
+
+console.log(users);
+// Always generates same 10 users with same seed</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section">
+                            <h2>Custom ID Formats</h2>
+                            <p>Use patterns to generate custom ID formats:</p>
+                            <div class="code-block">
+                                <pre><code>import { fake } from '@nano-faker/patterns';
+
+// User IDs
+const userId = fake("USR-####-@@@@");
+// "USR-4728-abcd"
+
+// Order numbers
+const orderNum = fake("ORD-########");
+// "ORD-47382910"
+
+// License keys
+const license = fake("****-****-****-****");
+// "a7X9-BzK4-mP2q-R8vN"
+
+// SSN-like patterns
+const ssn = fake("###-##-####");
+// "472-83-9102"</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section">
+                            <h2>Mock API Responses</h2>
+                            <p>Generate realistic mock data for API development:</p>
+                            <div class="code-block">
+                                <pre><code>import { setSeed } from '@nano-faker/core';
+import { fullName, email } from '@nano-faker/person';
+import { age, id } from '@nano-faker/number';
+import { ipv4 } from '@nano-faker/internet';
+
+setSeed(Date.now()); // Different data each time
+
+const mockUser = {
+  id: id(8),
+  name: fullName(),
+  email: email(),
+  age: age(18, 65),
+  lastLoginIp: ipv4(),
+  createdAt: new Date().toISOString(),
+};
+
+// Use in mock API handler
+app.get('/api/users/:id', (req, res) => {
+  res.json(mockUser);
+});</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section">
+                            <h2>Seeded Randomization</h2>
+                            <p>Use seeds to create reproducible random data:</p>
+                            <div class="code-block">
+                                <pre><code>import { setSeed, shuffle, pick } from '@nano-faker/core';
+
+const items = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+
+// Same seed = same shuffle
+setSeed(100);
+console.log(shuffle(items));
+// Always: ['cherry', 'apple', 'elderberry', 'date', 'banana']
+
+setSeed(100);
+console.log(shuffle(items));
+// Same result again
+
+// Different seed = different shuffle
+setSeed(200);
+console.log(shuffle(items));
+// Different order</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="doc-section">
+                            <h2>Combining Packages</h2>
+                            <p>Mix and match functions from different packages:</p>
+                            <div class="code-block">
+                                <pre><code>import { setSeed } from '@nano-faker/core';
+import { firstName, lastName } from '@nano-faker/person';
+import { domain } from '@nano-faker/internet';
+import { fake } from '@nano-faker/patterns';
+
+setSeed(12345);
+
+// Create a complete user profile
+const profile = {
+  firstName: firstName(),
+  lastName: lastName(),
+  username: `${firstName().toLowerCase()}_${fake("####")}`,
+  email: `${firstName().toLowerCase()}@${domain()}`,
+  userId: fake("USR-########"),
+  apiKey: fake("****-****-****-****"),
+};
+
+console.log(profile);</code></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="container">
+                <p>Built with ❤️ as a lightweight alternative to FakerJS</p>
+                <p class="footer-links">
+                    <a href="https://github.com/rinturajc/nano-faker" target="_blank">GitHub</a>
+                    <span>•</span>
+                    <a href="https://www.npmjs.com/package/@nano-faker/core" target="_blank">npm</a>
+                    <span>•</span>
+                    <span>MIT License</span>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

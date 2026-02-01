@@ -1,0 +1,44 @@
+{
+  "name": "nano-faker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Lightweight alternative to FakerJS - minimal bundle size, fully tree-shakable, deterministic fake data generation",
+  "keywords": [
+    "faker",
+    "fake",
+    "data",
+    "generator",
+    "mock",
+    "test",
+    "lightweight",
+    "tree-shaking",
+    "esm"
+  ],
+  "author": "Rintu Raj C",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rinturajc/nano-faker.git"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "dev:playground": "pnpm --filter playground dev",
+    "build:playground": "pnpm --filter playground build",
+    "typecheck": "pnpm -r typecheck",
+    "clean": "pnpm -r clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11",
+    "vitest": "^1.2.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

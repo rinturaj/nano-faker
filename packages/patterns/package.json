@@ -1,0 +1,37 @@
+{
+  "name": "@nano-faker/patterns",
+  "version": "0.1.0",
+  "description": "Pattern-based fake data generation for nano-faker",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "keywords": [
+    "pattern",
+    "format",
+    "fake"
+  ],
+  "author": "Rintu Raj C",
+  "license": "MIT",
+  "dependencies": {
+    "@nano-faker/core": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  }
+}
