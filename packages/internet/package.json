@@ -1,6 +1,6 @@
 {
   "name": "@nano-faker/internet",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Internet data generation utilities for nano-faker",
   "type": "module",
   "main": "./dist/index.js",

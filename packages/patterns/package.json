@@ -1,6 +1,6 @@
 {
   "name": "@nano-faker/patterns",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Pattern-based fake data generation for nano-faker",
   "type": "module",
   "main": "./dist/index.js",
