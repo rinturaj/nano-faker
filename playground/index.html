@@ -76,6 +76,16 @@
     <!-- Preload critical resources -->
     <link rel="preload" href="/src/style.css" as="style" />
     <link rel="preload" href="/src/main.ts" as="script" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XZ2BFHNBX7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-XZ2BFHNBX7');
+    </script>
 </head>
 
 <body>
@@ -900,6 +910,7 @@ console.log(profile);</code></pre>
     </div>
 
     <script type="module" src="/src/main.ts"></script>
+
 </body>
 
 </html>
