@@ -71,6 +71,27 @@ jobs:
           rm -rf package nano-faker-person-*.tgz
           cd ../..
 
+      - name: Verify npm authentication
+        run: |
+          echo "Checking npm authentication setup..."
+          echo "Registry: $(npm config get registry)"
+          # Check if .npmrc has auth token configured
+          if grep -q "_authToken" .npmrc; then
+            echo "✅ .npmrc contains auth token configuration"
+          else
+            echo "❌ .npmrc missing auth token configuration"
+          fi
+          # Verify NODE_AUTH_TOKEN is set
+          if [ -n "$NODE_AUTH_TOKEN" ]; then
+            echo "✅ NODE_AUTH_TOKEN environment variable is set"
+          else
+            echo "❌ NODE_AUTH_TOKEN environment variable is NOT set"
+            exit 1
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
       
       - name: Publish packages
         run: |
