@@ -51,9 +51,52 @@ jobs:
       - name: Build packages
         run: pnpm build
       
+      - name: Verify workspace protocol conversion
+        run: |
+          echo "Verifying that workspace:^ will be converted to proper semver ranges..."
+          # Pack a test package to verify conversion
+          cd packages/person
+          pnpm pack
+          tar -xzf nano-faker-person-*.tgz
+          echo "Checking dependencies in packed package:"
+          cat package/package.json | grep -A 5 '"dependencies"' || echo "No dependencies found"
+          # Verify it contains ^X.Y.Z instead of workspace:^
+          if cat package/package.json | grep -q 'workspace:'; then
+            echo "❌ ERROR: workspace: protocol found in packed package!"
+            cat package/package.json | grep 'workspace:'
+            exit 1
+          else
+            echo "✅ SUCCESS: workspace protocol correctly converted to semver ranges"
+          fi
+          rm -rf package nano-faker-person-*.tgz
+          cd ../..
+
+      
       - name: Publish packages
         run: |
-          # Publish all packages in the workspace
-          pnpm -r publish --access public --no-git-checks
+          # Publish packages in dependency order to avoid issues
+          # Core has no dependencies, so publish it first
+          cd packages/core
+          pnpm publish --access public --no-git-checks || echo "Core already published or failed"
+          cd ../..
+          
+          # Person, number, and patterns depend only on core
+          cd packages/person
+          pnpm publish --access public --no-git-checks || echo "Person already published or failed"
+          cd ../..
+          
+          cd packages/number
+          pnpm publish --access public --no-git-checks || echo "Number already published or failed"
+          cd ../..
+          
+          cd packages/patterns
+          pnpm publish --access public --no-git-checks || echo "Patterns already published or failed"
+          cd ../..
+          
+          # Internet depends on core and person, so publish it last
+          cd packages/internet
+          pnpm publish --access public --no-git-checks || echo "Internet already published or failed"
+          cd ../..
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
