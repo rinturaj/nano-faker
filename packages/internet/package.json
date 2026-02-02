@@ -1,6 +1,6 @@
 {
   "name": "@nano-faker/internet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Internet data generation utilities for nano-faker",
   "type": "module",
   "main": "./dist/index.js",
@@ -29,8 +29,8 @@
   "author": "Rintu Raj C",
   "license": "MIT",
   "dependencies": {
-    "@nano-faker/core": "workspace:*",
-    "@nano-faker/person": "workspace:*"
+    "@nano-faker/core": "workspace:^",
+    "@nano-faker/person": "workspace:^"
   },
   "devDependencies": {
     "typescript": "^5.3.3",

@@ -33,10 +33,10 @@ importers:
   packages/internet:
     dependencies:
       '@nano-faker/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       '@nano-faker/person':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../person
     devDependencies:
       typescript:
@@ -49,7 +49,7 @@ importers:
   packages/number:
     dependencies:
       '@nano-faker/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
     devDependencies:
       typescript:
@@ -62,7 +62,7 @@ importers:
   packages/patterns:
     dependencies:
       '@nano-faker/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
     devDependencies:
       typescript:
@@ -75,7 +75,7 @@ importers:
   packages/person:
     dependencies:
       '@nano-faker/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
     devDependencies:
       typescript:
